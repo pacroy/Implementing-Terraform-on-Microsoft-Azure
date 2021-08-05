@@ -56,7 +56,10 @@
               provider: 'azurerm'
               command: 'plan'
               workingDirectory: '$(System.DefaultWorkingDirectory)/networking'
-              commandOptions: '-out main.tfplan'
+              ${{ if eq(parameters.isDestroy, true) }}:
+                commandOptions: '-out main.tfplan -destroy'
+              ${{ if ne(parameters.isDestroy, true) }}:
+                commandOptions: '-out main.tfplan'
               environmentServiceNameAzureRM: 'conyaem-nprd(172f7750-929c-4214-99fb-e1e8d9e582f2)'
       
           - task: TerraformTaskV2@2
@@ -69,4 +72,3 @@
               workingDirectory: '$(System.DefaultWorkingDirectory)/networking'
               commandOptions: 'main.tfplan'
               environmentServiceNameAzureRM: 'conyaem-nprd(172f7750-929c-4214-99fb-e1e8d9e582f2)'
-              

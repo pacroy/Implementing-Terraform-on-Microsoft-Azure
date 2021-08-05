@@ -3,11 +3,21 @@
 variables:
 - group: globomantics
 
+parameters:
+- name: 'isDestroy'
+  displayName: 'Destroy operation?'
+  type: boolean
+  default: false
+
 trigger:
+  batch: true
   branches:
     include:
     - main
-
+  paths:
+    exclude:
+    - README.md
+    
 stages:
 - stage: development
   displayName: development
@@ -67,7 +77,10 @@ stages:
               provider: 'azurerm'
               command: 'plan'
               workingDirectory: '$(System.DefaultWorkingDirectory)/networking'
-              commandOptions: '-out main.tfplan'
+              ${{ if eq(parameters.isDestroy, true) }}:
+                commandOptions: '-out main.tfplan -destroy'
+              ${{ if ne(parameters.isDestroy, true) }}:
+                commandOptions: '-out main.tfplan'
               environmentServiceNameAzureRM: 'conyaem-nprd(172f7750-929c-4214-99fb-e1e8d9e582f2)'
       
           - task: TerraformTaskV2@2
