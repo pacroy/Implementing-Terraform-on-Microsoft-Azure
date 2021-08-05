@@ -12,3 +12,4 @@
 *.tfplan
 
 *next-step.txt
+**/.terraform.lock.hcl
