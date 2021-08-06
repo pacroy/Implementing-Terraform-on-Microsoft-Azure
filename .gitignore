@@ -20,3 +20,5 @@
 1-main-vnet/vnet-peering.tf
 4-remote-state-prep/backend-config.txt
 9-app-deploy/backend-config.txt
+9-app-deploy/azuredeploy.json
+9-app-deploy/template-deploy.tf
