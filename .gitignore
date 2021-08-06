@@ -19,3 +19,4 @@
 1-main-vnet/backend.tf
 1-main-vnet/vnet-peering.tf
 4-remote-state-prep/backend-config.txt
+9-app-deploy/backend-config.txt
