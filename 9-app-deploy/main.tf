@@ -29,7 +29,7 @@ variable "naming_prefix" {
 
 variable "location" {
   type    = string
-  default = "eastus"
+  default = "southeastasia"
 }
 
 variable "network_state" {
