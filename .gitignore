@@ -13,3 +13,4 @@
 
 *next-step.txt
 **/.terraform.lock.hcl
+8-app-remote-state/backend-config.txt
