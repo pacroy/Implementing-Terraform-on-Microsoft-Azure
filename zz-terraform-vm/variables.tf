@@ -5,7 +5,7 @@ variable "resource_group_name" {
 
 variable "location" {
   type    = string
-  default = "eastus"
+  default = "southeastasia"
 }
 
 variable "vnet_cidr_range" {
